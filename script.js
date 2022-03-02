@@ -1,13 +1,8 @@
-/* the program gets a user input for his weapon choice
-the computer selects his random choice
-we have a function compare both choices and determine a winner
-If the computer picks rock and user picks scissors, computer wins, else computer loses
-If the computer picks paper and the user picks scissors, c wins else c loses
-If the computer picks scissors and u picks paper, c wins else c loses
-If they are the same, it's a tie
-*/
+// The initial variable declarations including the user's pre-picked input/
 let computerChoice;
-let userChoice = 'scissors'
+let userChoice = 'scissors';
+let result;
+// The function picks a random number that will change the computerChoice variable's value
 function computerPlay () {
     computerChoice = Math.floor(Math.random() * 3);
     switch (computerChoice) {
@@ -23,12 +18,14 @@ function computerPlay () {
     }
 }
 computerPlay();
+// The function will change the result's value according to the game's winner
 function userPlay (userChoice) {return userChoice.toLowerCase();}
-function determineWinner (result) {
+function determineWinner () {
     if((computerChoice === 'rock' && userChoice === 'scissors') || (computerChoice === 'paper' && userChoice === 'rock') || (computerChoice === 'scissors' && userChoice === 'paper')) {result = 'You lost!'}
     else if (computerChoice === userChoice) {result = 'It\'s a tie!'} else {result = 'You won!'}
     return result;
 }
-console.log(determineWinner());
-console.log(computerChoice);
-console.log(userChoice);
+determineWinner();
+console.log(`The computer chose ${computerChoice}.`);
+console.log(`You chose ${userChoice}.`);
+console.log(result);
