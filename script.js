@@ -1,7 +1,6 @@
 // The initial variable declarations including the user's pre-picked input/
 let computerChoice;
-let userChoice = 'paper';
-
+let userChoice = 'ROcK';
 // The function picks a random number that will change the computerChoice variable's value
 function computerPlay () {
     computerChoice = Math.floor(Math.random() * 3);
@@ -19,7 +18,8 @@ function computerPlay () {
 }
 
 // The function will pick a round winner
-function userPlay (userChoice) {return userChoice.toLowerCase();}
+function userChoiceLow () {userChoice = userChoice.toLowerCase()}
+userChoiceLow();
 function playRound () {
     computerPlay(); 
     if((computerChoice === 'rock' && userChoice === 'scissors') || (computerChoice === 'paper' && userChoice === 'rock') || (computerChoice === 'scissors' && userChoice === 'paper')) {return `You lost! Computer chose ${computerChoice}.`}
@@ -30,12 +30,13 @@ function game () {
     let userWinnerCount = 0;
     let computerWinnerCount = 0;
     let ties = 0;
-    for (let i = 0; i < 5; i++) {console.log(playRound());
-    if(playRound() === `You won! Computer chose ${computerChoice}.`) {userWinnerCount += 1}
-    else if (playRound() === `You lost! Computer chose ${computerChoice}.`) {computerWinnerCount += 1}
+    let rounds;
+    for (let i = 0; i < 5; i++) {rounds = playRound();
+        console.log(rounds);
+    if(rounds === `You won! Computer chose ${computerChoice}.`) {userWinnerCount += 1}
+    else if (rounds === `You lost! Computer chose ${computerChoice}.`) {computerWinnerCount += 1}
     else {ties += 1}
     }
     console.log(`${userWinnerCount} - times the user won / ${computerWinnerCount} - times the computer won / ${ties} - Ties`);
 }
 game()
-
