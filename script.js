@@ -1,6 +1,6 @@
 // The initial variable declarations including the user's pre-picked input with the case sensitive test/
 let computerChoice;
-let userChoice = window.prompt('What is your pick?', '');
+let userChoice;
 // The function picks a random number that will change the computerChoice variable's value
 function computerPlay () {
     computerChoice = Math.floor(Math.random() * 3);
@@ -27,16 +27,20 @@ function userChoiceCheck () {
 }
     userChoice = userChoice.toLowerCase();
 }
-userChoiceCheck()
+
 // The function will pick a round winner
 
 function playRound () {
-    computerPlay(); 
+    computerPlay();
+    userChoice = window.prompt('What is your pick?', '');
+    userChoiceCheck()
     if((computerChoice === 'rock' && userChoice === 'scissors') || (computerChoice === 'paper' && userChoice === 'rock')  || 
-    (computerChoice === 'scissors' && userChoice === 'paper')) {return `You lost! Computer chose ${computerChoice}.`}
-    else if (computerChoice === userChoice) {return `It's a tie! Computer chose ${computerChoice}.`} 
+        (computerChoice === 'scissors' && userChoice === 'paper')) {return `You lost! Computer chose ${computerChoice}.`}
+    else if (computerChoice === userChoice) 
+    {return `It's a tie! Computer chose ${computerChoice}.`} 
     else if ((userChoice === 'rock' && computerChoice === 'scissors') || (userChoice === 'paper' && computerChoice === 'rock') || 
-    (userChoice === 'scissors' && computerChoice === 'paper')) {return `You won! Computer chose ${computerChoice}.`}
+            (userChoice === 'scissors' && computerChoice === 'paper')) 
+    {return `You won! Computer chose ${computerChoice}.`}
     else {return 'It seems like you did not enter a valid weapon.'}
 }
 // The function will pick a winner out of 5 rounds also counting ties
