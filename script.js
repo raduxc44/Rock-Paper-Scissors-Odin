@@ -32,9 +32,11 @@ userChoiceCheck()
 
 function playRound () {
     computerPlay(); 
-    if((computerChoice === 'rock' && userChoice === 'scissors') || (computerChoice === 'paper' && userChoice === 'rock') || (computerChoice === 'scissors' && userChoice === 'paper')) {return `You lost! Computer chose ${computerChoice}.`}
+    if((computerChoice === 'rock' && userChoice === 'scissors') || (computerChoice === 'paper' && userChoice === 'rock')  || 
+    (computerChoice === 'scissors' && userChoice === 'paper')) {return `You lost! Computer chose ${computerChoice}.`}
     else if (computerChoice === userChoice) {return `It's a tie! Computer chose ${computerChoice}.`} 
-    else if ((userChoice === 'rock' && computerChoice === 'scissors') || (userChoice === 'paper' && computerChoice === 'rock') || (userChoice === 'scissors' && computerChoice === 'paper')) {return `You won! Computer chose ${computerChoice}.`}
+    else if ((userChoice === 'rock' && computerChoice === 'scissors') || (userChoice === 'paper' && computerChoice === 'rock') || 
+    (userChoice === 'scissors' && computerChoice === 'paper')) {return `You won! Computer chose ${computerChoice}.`}
     else {return 'It seems like you did not enter a valid weapon.'}
 }
 // The function will pick a winner out of 5 rounds also counting ties
