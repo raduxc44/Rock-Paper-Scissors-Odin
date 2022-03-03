@@ -1,4 +1,4 @@
-// The initial variable declarations including the user's pre-picked input/
+// The initial variable declarations including the user's pre-picked input with the case sensitive test/
 let computerChoice;
 let userChoice = 'ROcK';
 // The function picks a random number that will change the computerChoice variable's value
@@ -16,16 +16,19 @@ function computerPlay () {
         break;
     }
 }
+// The function will make the user input case-insensitive
 
-// The function will pick a round winner
 function userChoiceLow () {userChoice = userChoice.toLowerCase()}
 userChoiceLow();
+
+// The function will pick a round winner
+
 function playRound () {
     computerPlay(); 
     if((computerChoice === 'rock' && userChoice === 'scissors') || (computerChoice === 'paper' && userChoice === 'rock') || (computerChoice === 'scissors' && userChoice === 'paper')) {return `You lost! Computer chose ${computerChoice}.`}
     else if (computerChoice === userChoice) {return `It's a tie! Computer chose ${computerChoice}.`} else {return `You won! Computer chose ${computerChoice}.`}
 }
-// The function will pick a winner of 5 rounds *not working*
+// The function will pick a winner out of 5 rounds also counting ties
 function game () {
     let userWinnerCount = 0;
     let computerWinnerCount = 0;
@@ -37,6 +40,6 @@ function game () {
     else if (rounds === `You lost! Computer chose ${computerChoice}.`) {computerWinnerCount += 1}
     else {ties += 1}
     }
-    console.log(`${userWinnerCount} - times the user won / ${computerWinnerCount} - times the computer won / ${ties} - Ties`);
+    console.log(`${userWinnerCount} - You / ${computerWinnerCount} - The computer / ${ties} - Tie(s)`);
 }
 game()
