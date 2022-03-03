@@ -54,7 +54,7 @@ function playRound () {
     else {console.log('It seems like you did not enter a valid weapon.')}
     }
 
-// The function will pick a winner out of 5 rounds also counting ties
+// The function will pick a winner out of 5 rounds also counting ties and show each's score
 function game () {
     for (let i = 0; i < 5; i++) {playRound();
     }
