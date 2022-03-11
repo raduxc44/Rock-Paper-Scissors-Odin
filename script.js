@@ -42,11 +42,20 @@ function playRound(userChoice) {
     }
     computerWins();
 
-    if (playerWins()) { roundResult = `You won! The computer chose ${computerChoice}. You chose ${userChoice}. <br>` }
-    else if (tie()) { roundResult = `It's a tie! You both chose ${computerChoice}. <br>` }
-    else if (computerWins()) { roundResult = `You lost. The computer chose ${computerChoice}. You chose ${userChoice}. <br>` }
+    if (playerWins()) { userWinnerCount++; roundResult = `You won! The computer chose ${computerChoice}. You chose ${userChoice}. <br>` }
+    else if (tie()) { tiesCount++; roundResult = `It's a tie! You both chose ${computerChoice}. <br>` }
+    else if (computerWins()) { computerWinnerCount++; roundResult = `You lost. The computer chose ${computerChoice}. You chose ${userChoice}. <br>` }
     else { roundResult = 'It seems like you did not enter a valid weapon. <br>' }
 }
+
+function determineWinner() {
+    if (userWinnerCount > 4) { return `You won! ${userWinnerCount} - ${computerWinnerCount} for you!<br>` }
+    else if (computerWinnerCount > 4) { return `You lost. ${computerWinnerCount} - ${userWinnerCount} for the computer.<br>` }
+    else { return '' }
+}
+
+
+
 
 // Gibberish but works, will reformat
 
@@ -69,15 +78,30 @@ buttonTwo.innerHTML = '<img src = "../Rock-Paper-Scissors-Odin/source/rsz_pngtre
 buttonThree.innerHTML = '<img src="../Rock-Paper-Scissors-Odin/source/rsz_1scissor-symbol-iluustration-on-transparent-background-png-removebg-preview.png" alt="SCISSORS">'
 const resultsContainer = document.createElement('div');
 resultsContainer.classList.add('results');
-buttonOne.addEventListener('click', () => { playRound('rock'); document.getElementsByClassName('results')[0].innerHTML += roundResult; });
-buttonTwo.addEventListener('click', () => { playRound('paper'); document.getElementsByClassName('results')[0].innerHTML += roundResult; });
-buttonThree.addEventListener('click', () => { playRound('scissors'); document.getElementsByClassName('results')[0].innerHTML += roundResult; });
+buttonContainer.appendChild(resultsContainer);
+buttonContainer.appendChild(resultsContainer);
+document.getElementsByClassName('results')[0].style = 'display: none'
+buttonOne.addEventListener('click', () => {
+    resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; height:auto; width: auto; padding: 20px';
+    playRound('rock');
+    document.getElementsByClassName('results')[0].innerHTML += `${roundResult}  / ${userWinnerCount} - You / ${computerWinnerCount} - The computer / ${tiesCount} - Tie(s) <br>`;
+    document.getElementsByClassName('results')[0].innerHTML += determineWinner();
+});
+
+buttonTwo.addEventListener('click', () => {
+    resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; height:auto; width: auto; padding: 20px';
+    playRound('paper');
+    document.getElementsByClassName('results')[0].innerHTML += `${roundResult}  / ${userWinnerCount} - You / ${computerWinnerCount} - The computer / ${tiesCount} - Tie(s) <br>`;
+    document.getElementsByClassName('results')[0].innerHTML += determineWinner();
+});
+buttonThree.addEventListener('click', () => {
+    resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; height:auto; width: auto; padding: 20px';
+    playRound('scissors');
+    document.getElementsByClassName('results')[0].innerHTML += `${roundResult}  / ${userWinnerCount} - You / ${computerWinnerCount} - The computer / ${tiesCount} - Tie(s) <br>`;
+    document.getElementsByClassName('results')[0].innerHTML += determineWinner();
+});
 const buttonsArr = document.querySelectorAll('button');
 for (let i = 0; i < buttonsArr.length; i++) {
     buttonsArr[i].style = 'background-color:red; width: 250px; padding: 0;'
 }
-
-
-buttonContainer.appendChild(resultsContainer);
-resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; width:75%; height:500px;';
 
