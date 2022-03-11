@@ -57,29 +57,42 @@ function determineWinner() {
 
 
 
-// Gibberish but works, will reformat
+// Js-only challenge
 
 const body = document.querySelector('body');
+
 body.style = '<link rel="stylesheet" href="../Rock-Paper-Scissors-Odin/style.css">'
+
 const buttonContainer = document.createElement('div');
+
 buttonContainer.style = 'background-color : #F2CC8F; height: 1080px; display : flex; flex-direction: column; align-items: center; justify-content: space-around';
+
 body.appendChild(buttonContainer);
+
 const buttons = document.createElement('div');
+
 buttonContainer.appendChild(buttons);
+
 buttons.style = 'display:flex; width: 100%; height : 25%; justify-content : space-around;';
+
 const buttonOne = document.createElement('button');
 const buttonTwo = document.createElement('button');
 const buttonThree = document.createElement('button');
+
 buttons.appendChild(buttonOne);
 buttons.appendChild(buttonTwo);
 buttons.appendChild(buttonThree);
+
 buttonOne.innerHTML = '<img src = "../Rock-Paper-Scissors-Odin/source/8-2-rock-png-picture-thumb.png" alt="ROCK">';
 buttonTwo.innerHTML = '<img src = "../Rock-Paper-Scissors-Odin/source/rsz_pngtree-a-blank-sheet-of-writing-image_1297633-removebg-preview.png" alt="PAPER">';
 buttonThree.innerHTML = '<img src="../Rock-Paper-Scissors-Odin/source/rsz_1scissor-symbol-iluustration-on-transparent-background-png-removebg-preview.png" alt="SCISSORS">'
+
 const resultsContainer = document.createElement('div');
+
 resultsContainer.classList.add('results');
+
 buttonContainer.appendChild(resultsContainer);
-buttonContainer.appendChild(resultsContainer);
+
 document.getElementsByClassName('results')[0].style = 'display: none'
 
 function eventFunc(weapon) {
