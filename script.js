@@ -62,7 +62,7 @@ function determineWinner() {
 const body = document.querySelector('body');
 body.style = '<link rel="stylesheet" href="../Rock-Paper-Scissors-Odin/style.css">'
 const buttonContainer = document.createElement('div');
-buttonContainer.style = 'background-color : yellow; height: 1080px; display : flex; flex-direction: column; align-items: center; justify-content: space-around';
+buttonContainer.style = 'background-color : #F2CC8F; height: 1080px; display : flex; flex-direction: column; align-items: center; justify-content: space-around';
 body.appendChild(buttonContainer);
 const buttons = document.createElement('div');
 buttonContainer.appendChild(buttons);
@@ -81,27 +81,20 @@ resultsContainer.classList.add('results');
 buttonContainer.appendChild(resultsContainer);
 buttonContainer.appendChild(resultsContainer);
 document.getElementsByClassName('results')[0].style = 'display: none'
-buttonOne.addEventListener('click', () => {
-    resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; height:auto; width: auto; padding: 20px';
-    playRound('rock');
-    document.getElementsByClassName('results')[0].innerHTML += `${roundResult}  / ${userWinnerCount} - You / ${computerWinnerCount} - The computer / ${tiesCount} - Tie(s) <br>`;
-    document.getElementsByClassName('results')[0].innerHTML += determineWinner();
-});
 
-buttonTwo.addEventListener('click', () => {
-    resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; height:auto; width: auto; padding: 20px';
-    playRound('paper');
+function eventFunc(weapon) {
+    resultsContainer.style = 'background-color:#98473E; color:white; display:flex; flex-direction:column; height:auto; width: auto; padding: 20px';
+    playRound(weapon);
     document.getElementsByClassName('results')[0].innerHTML += `${roundResult}  / ${userWinnerCount} - You / ${computerWinnerCount} - The computer / ${tiesCount} - Tie(s) <br>`;
     document.getElementsByClassName('results')[0].innerHTML += determineWinner();
-});
-buttonThree.addEventListener('click', () => {
-    resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; height:auto; width: auto; padding: 20px';
-    playRound('scissors');
-    document.getElementsByClassName('results')[0].innerHTML += `${roundResult}  / ${userWinnerCount} - You / ${computerWinnerCount} - The computer / ${tiesCount} - Tie(s) <br>`;
-    document.getElementsByClassName('results')[0].innerHTML += determineWinner();
-});
+}
+
+buttonOne.addEventListener('click', () => { eventFunc('rock') });
+buttonTwo.addEventListener('click', () => { eventFunc('paper') });
+buttonThree.addEventListener('click', () => { eventFunc('scissors') });
+
 const buttonsArr = document.querySelectorAll('button');
 for (let i = 0; i < buttonsArr.length; i++) {
-    buttonsArr[i].style = 'background-color:red; width: 250px; padding: 0;'
+    buttonsArr[i].style = 'background-color:#98473E; width: 250px; padding: 0;'
 }
 
