@@ -1,9 +1,11 @@
-// The initial variable declarations including the user's pre-picked input with the case sensitive test/
+// The initial variable declarations
 let computerChoice;
 let userWinnerCount = 0;
 let computerWinnerCount = 0;
 let tiesCount = 0;
+let roundResult = '';
 let rounds;
+
 // The function picks a random number that will change the computerChoice variable's value
 function computerPlay() {
     computerChoice = Math.floor(Math.random() * 3);
@@ -19,9 +21,8 @@ function computerPlay() {
             break;
     }
 }
-// The function will check the input and block the rest of the content until the input is valid
 
-// The function will pick a round winner
+// The function will play a round and determine the winner for it
 
 function playRound(userChoice) {
     computerPlay();
@@ -41,24 +42,21 @@ function playRound(userChoice) {
     }
     computerWins();
 
-
-
-
-
-
-    if (playerWins()) { console.log(`You won! The computer chose ${computerChoice}`) }
-    else if (tie()) { console.log(`It's a tie! You both chose ${computerChoice}`) }
-    else if (computerWins()) { console.log(`You lost. The computer chose ${computerChoice}`) }
-    else { console.log('It seems like you did not enter a valid weapon.') }
+    if (playerWins()) { roundResult = `You won! The computer chose ${computerChoice}. You chose ${userChoice}. <br>` }
+    else if (tie()) { roundResult = `It's a tie! You both chose ${computerChoice}. <br>` }
+    else if (computerWins()) { roundResult = `You lost. The computer chose ${computerChoice}. You chose ${userChoice}. <br>` }
+    else { roundResult = 'It seems like you did not enter a valid weapon. <br>' }
 }
 
-// The function will pick a winner out of 5 rounds also counting ties and show each's score
+// Gibberish but works, will reformat
+
 const body = document.querySelector('body');
-const div = document.createElement('div');
-div.style = 'background-color : yellow; height: 100px; display : flex; align-items: center;';
-body.appendChild(div);
+body.style = '<link rel="stylesheet" href="../Rock-Paper-Scissors-Odin/style.css">'
+const buttonContainer = document.createElement('div');
+buttonContainer.style = 'background-color : yellow; height: 1080px; display : flex; flex-direction: column; align-items: center; justify-content: space-around';
+body.appendChild(buttonContainer);
 const buttons = document.createElement('div');
-div.appendChild(buttons);
+buttonContainer.appendChild(buttons);
 buttons.style = 'display:flex; width: 100%; height : 25%; justify-content : space-around;';
 const buttonOne = document.createElement('button');
 const buttonTwo = document.createElement('button');
@@ -66,13 +64,20 @@ const buttonThree = document.createElement('button');
 buttons.appendChild(buttonOne);
 buttons.appendChild(buttonTwo);
 buttons.appendChild(buttonThree);
-buttonOne.classList.add('btn');
-buttonOne.innerText = 'Rock';
-buttonTwo.innerText = 'Paper';
-buttonThree.innerText = 'Scissors';
-buttonTwo.classList.add('btn');
-buttonThree.classList.add('btn');
-const btn = document.querySelector('btn');
-buttonOne.addEventListener('click', () => { playRound('rock') });
-buttonTwo.addEventListener('click', () => { playRound('paper') });
-buttonThree.addEventListener('click', () => { playRound('scissors') })
+buttonOne.innerHTML = '<img src = "../Rock-Paper-Scissors-Odin/source/8-2-rock-png-picture-thumb.png" alt="ROCK">';
+buttonTwo.innerHTML = '<img src = "../Rock-Paper-Scissors-Odin/source/rsz_pngtree-a-blank-sheet-of-writing-image_1297633-removebg-preview.png" alt="PAPER">';
+buttonThree.innerHTML = '<img src="../Rock-Paper-Scissors-Odin/source/rsz_1scissor-symbol-iluustration-on-transparent-background-png-removebg-preview.png" alt="SCISSORS">'
+const resultsContainer = document.createElement('div');
+resultsContainer.classList.add('results');
+buttonOne.addEventListener('click', () => { playRound('rock'); document.getElementsByClassName('results')[0].innerHTML += roundResult; });
+buttonTwo.addEventListener('click', () => { playRound('paper'); document.getElementsByClassName('results')[0].innerHTML += roundResult; });
+buttonThree.addEventListener('click', () => { playRound('scissors'); document.getElementsByClassName('results')[0].innerHTML += roundResult; });
+const buttonsArr = document.querySelectorAll('button');
+for (let i = 0; i < buttonsArr.length; i++) {
+    buttonsArr[i].style = 'background-color:red; width: 250px; padding: 0;'
+}
+
+
+buttonContainer.appendChild(resultsContainer);
+resultsContainer.style = 'background-color:black; color:white; display:flex; flex-direction:column; width:75%; height:500px;';
+
