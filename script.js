@@ -83,9 +83,9 @@ buttons.appendChild(buttonOne);
 buttons.appendChild(buttonTwo);
 buttons.appendChild(buttonThree);
 
-buttonOne.innerHTML = '<img src = "../Rock-Paper-Scissors-Odin/source/8-2-rock-png-picture-thumb.png" alt="ROCK">';
-buttonTwo.innerHTML = '<img src = "../Rock-Paper-Scissors-Odin/source/rsz_pngtree-a-blank-sheet-of-writing-image_1297633-removebg-preview.png" alt="PAPER">';
-buttonThree.innerHTML = '<img src="../Rock-Paper-Scissors-Odin/source/rsz_1scissor-symbol-iluustration-on-transparent-background-png-removebg-preview.png" alt="SCISSORS">'
+buttonOne.innerHTML = '<img src = "./source/8-2-rock-png-picture-thumb.png" alt="ROCK">';
+buttonTwo.innerHTML = '<img src = "./source/rsz_pngtree-a-blank-sheet-of-writing-image_1297633-removebg-preview.png" alt="PAPER">';
+buttonThree.innerHTML = '<img src="./source/rsz_1scissor-symbol-iluustration-on-transparent-background-png-removebg-preview.png" alt="SCISSORS">'
 
 const resultsContainer = document.createElement('div');
 
